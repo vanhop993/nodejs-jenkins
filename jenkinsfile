@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {nodejs "node"}
     stages {
-        state('Clone') {
+        stage('Clone') {
             steps {
                 git 'https://github.com/vanhop993/nodejs-jenkins.git'
             }
