@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    tools {nodejs "node"}
+    tools {nodejs '16.14.2'}
     stages {
         stage('Clone') {
             steps {
@@ -22,7 +22,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy...'
-                sh 'npm start'
+                withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+                    
+                }
             }
         }
     }
