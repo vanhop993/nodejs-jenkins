@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    tools {nodejs "node"}
+    stages {
+        state('Clone') {
+            steps {
+                git 'https://github.com/vanhop993/learn-jenkins-flie.git'
+            }
+        } 
+        stage('Get package') {
+            steps {
+                echo 'get package'
+                sh 'npm install'
+            }
+        }
+        stage('Testing') {
+            steps {
+                echo 'Testing...'
+                sh 'npm run test'
+            }
+        }
+        stage('Deliver') {
+            steps {
+                echo 'Deliver...'
+                sh 'npm start'
+            }
+        }
+    }
+}
